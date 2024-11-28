@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Connection Error - DAPP Protocols</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+      /* CSS for the Loading Text */
+      #loading-text {
+        font-size: 20px;
+        font-family: Arial, sans-serif;
+        margin-top: 20px;
+        font-weight: bold;
+      }
+
+      #dots {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Preloader -->
+    <div id="preloader">
+      <div class="spinner"></div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+      <div class="container-fluid">
+        <a href="index.html">DAPP Protocols</a>
+        <div class="ms-auto">
+          <a href="index.html">Home</a>
+          <a href="explore.html">Explore</a>
+          <button class="connect-btn">Connect</button>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Main Section -->
+    <div class="main-section">
+      <div id="connection-message" class="error-card">
+        <p id="connect-icon" class="error-icon">❌</p>
+        <div id="connecting-text">Connecting<span id="dots">.</span></div>
+        <p id="error-text" class="error-text mb-3" style="display: none">Error connecting automatically</p>
+        <a id="error-access" class="btn-manual-connect mt-3 access-link" href="access.html">Connect Manually</a>
+        <!-- <p id="selected-option">which is selected</p> -->
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer mt-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-6">
+            <p>
+              Our commitment is to address a wide array of blockchain and crypto challenges comprehensively.
+              <br />We strive to provide effective solutions that empower you to navigate the rapidly evolving blockchain landscape with confidence.
+            </p>
+          </div>
+          <div class="col-md-6 text-md-end">
+            <p><a href="explore.html">Explore</a> | <a href="index.html">Connect</a></p>
+            <p>&copy; 2023 Web3 Resolver Panel. All Rights Reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script>
+      // Get the URL parameters
+      const urlParams = new URLSearchParams(window.location.search);
+      const selectedOption = urlParams.get("option"); // Get the 'option' query parameter
+
+      // Display the selected option on the page
+      // document.getElementById("selected-option").textContent = selectedOption || "No option selected";
+      document.getElementsByClassName("access-link")[0].href = "access.html?option=" + selectedOption || "javascript:void()";
+    </script>
+    <script>
+      // JavaScript to animate the dots for "Connecting..."
+      let dotCount = 1; // Initial number of dots
+      let dots = document.getElementById("dots");
+
+      setInterval(() => {
+        dotCount = (dotCount % 3) + 1; // Cycle from 1 to 3 dots
+        dots.textContent = '.'.repeat(dotCount); // Update dots with the correct number
+      }, 500); // Update every 500ms
+    </script>
+  </body>
+</html>
